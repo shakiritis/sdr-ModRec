@@ -1,0 +1,1014 @@
+options:
+  parameters:
+    author: shakir
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: modclf_live_infer
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Not titled yet
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: cfo_hz
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: CFO (Hz)
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-2000'
+    step: '50'
+    stop: '2000'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1128, 0.0]
+    rotation: 0
+    state: disabled
+- name: cfo_hz
+  id: variable
+  parameters:
+    comment: ''
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [824, 80.0]
+    rotation: 0
+    state: enabled
+- name: cfo_norm
+  id: variable
+  parameters:
+    comment: ''
+    value: cfo_hz / samp_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [832, 8.0]
+    rotation: 0
+    state: enabled
+- name: mod_sel
+  id: variable_qtgui_chooser
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: Modulation
+    label0: '"BPSK"'
+    label1: '"QPSK"'
+    label2: '"8PSK"'
+    label3: '"16QAM"'
+    label4: ''
+    labels: '[]'
+    num_opts: '4'
+    option0: '0'
+    option1: '1'
+    option2: '2'
+    option3: '3'
+    option4: '4'
+    options: '[0, 1, 2]'
+    orient: Qt.QVBoxLayout
+    type: int
+    value: '0'
+    widget: combo_box
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [912, 4.0]
+    rotation: 0
+    state: enabled
+- name: noise_volt
+  id: variable
+  parameters:
+    comment: ''
+    value: (0.5 * 10**(-snr_db/10.0))**0.5
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [416, 8.0]
+    rotation: 0
+    state: enabled
+- name: rolloff
+  id: variable
+  parameters:
+    comment: ''
+    value: '0.35'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [680, 8.0]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: 1e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [168, 8.0]
+    rotation: 0
+    state: enabled
+- name: samp_rate_0
+  id: variable
+  parameters:
+    comment: ''
+    value: 1e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [520, 8.0]
+    rotation: 0
+    state: enabled
+- name: snr_db
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: SNR (dB)
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-5'
+    step: '1'
+    stop: '25'
+    value: '20'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1024, 0.0]
+    rotation: 0
+    state: enabled
+- name: span
+  id: variable
+  parameters:
+    comment: ''
+    value: '11'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [760, 8.0]
+    rotation: 0
+    state: enabled
+- name: sps
+  id: variable
+  parameters:
+    comment: ''
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [616, 8.0]
+    rotation: 0
+    state: enabled
+- name: analog_random_source_x_0
+  id: analog_random_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    max: '1'
+    maxoutbuf: '0'
+    min: '0'
+    minoutbuf: '0'
+    num_samps: '1000'
+    repeat: 'True'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 160.0]
+    rotation: 0
+    state: enabled
+- name: analog_random_source_x_0_0
+  id: analog_random_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    max: '3'
+    maxoutbuf: '0'
+    min: '0'
+    minoutbuf: '0'
+    num_samps: '1000'
+    repeat: 'True'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 288.0]
+    rotation: 0
+    state: enabled
+- name: analog_random_source_x_0_0_0
+  id: analog_random_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    max: '7'
+    maxoutbuf: '0'
+    min: '0'
+    minoutbuf: '0'
+    num_samps: '1000'
+    repeat: 'True'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 400.0]
+    rotation: 0
+    state: enabled
+- name: analog_random_source_x_0_0_0_0
+  id: analog_random_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    max: '15'
+    maxoutbuf: '0'
+    min: '0'
+    minoutbuf: '0'
+    num_samps: '1000'
+    repeat: 'True'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 496.0]
+    rotation: 0
+    state: enabled
+- name: blocks_message_debug_0
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    en_uvec: 'True'
+    log_level: info
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1032, 1152.0]
+    rotation: 0
+    state: disabled
+- name: blocks_selector_0
+  id: blocks_selector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    enabled: 'True'
+    input_index: mod_sel
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '4'
+    num_outputs: '1'
+    output_index: '0'
+    showports: 'True'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [808, 328.0]
+    rotation: 0
+    state: enabled
+- name: blocks_throttle2_0
+  id: blocks_throttle2
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1208, 360.0]
+    rotation: 0
+    state: enabled
+- name: channels_channel_model_0
+  id: channels_channel_model
+  parameters:
+    affinity: ''
+    alias: ''
+    block_tags: 'False'
+    comment: ''
+    epsilon: '1.0'
+    freq_offset: cfo_norm
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: noise_volt
+    seed: '0'
+    taps: '[1.0+0j]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 328.0]
+    rotation: 0
+    state: enabled
+- name: digital_chunks_to_symbols_xx_0
+  id: digital_chunks_to_symbols_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    dimension: '2'
+    in_type: byte
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    out_type: complex
+    symbol_table: '[-1+0j, 1+0j]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 192.0]
+    rotation: 0
+    state: enabled
+- name: digital_chunks_to_symbols_xx_0_0
+  id: digital_chunks_to_symbols_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    dimension: '2'
+    in_type: byte
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    out_type: complex
+    symbol_table: '[(1+1j)/np.sqrt(2), (-1+1j)/np.sqrt(2), (-1-1j)/np.sqrt(2), (1-1j)/np.sqrt(2)]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 320.0]
+    rotation: 0
+    state: enabled
+- name: digital_chunks_to_symbols_xx_0_0_0
+  id: digital_chunks_to_symbols_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    dimension: '2'
+    in_type: byte
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    out_type: complex
+    symbol_table: '[np.exp(1j*2*np.pi*k/8) for k in range(8)]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 432.0]
+    rotation: 0
+    state: enabled
+- name: digital_chunks_to_symbols_xx_0_0_0_0
+  id: digital_chunks_to_symbols_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    dimension: '2'
+    in_type: byte
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    out_type: complex
+    symbol_table: '[(i+1j*q)/np.sqrt(10) for q in [-3,-1,1,3] for i in [-3,-1,1,3]]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 528.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_0
+  id: epy_block
+  parameters:
+    _source_code: "import numpy as np\nimport onnxruntime as ort\nimport json\nimport\
+      \ pmt\nfrom gnuradio import gr\n\nclass blk(gr.sync_block):\n    def __init__(self,\
+      \ model_path=\"models/modclf.onnx\", labels_path=\"models/labels.json\",\n \
+      \                win_len=1024, hop_len=256, print_on_change=True):\n       \
+      \ gr.sync_block.__init__(\n            self,\n            name=\"modclf_infer_onnx\"\
+      ,\n            in_sig=[np.complex64],\n            out_sig=[np.complex64, np.float32],\n\
+      \        )\n\n        self.message_port_register_out(pmt.intern(\"label_out\"\
+      ))\n\n        self.win_len = int(win_len)\n        self.hop_len = int(hop_len)\n\
+      \        self.print_on_change = bool(print_on_change)\n\n        with open(labels_path,\
+      \ \"r\") as f:\n            self.labels = json.load(f)\n\n        sess_opts\
+      \ = ort.SessionOptions()\n        sess_opts.intra_op_num_threads = 1\n     \
+      \   self.sess = ort.InferenceSession(model_path, sess_options=sess_opts, providers=[\"\
+      CPUExecutionProvider\"])\n        self.input_name = self.sess.get_inputs()[0].name\n\
+      \n        self.buf = np.zeros(self.win_len, dtype=np.complex64)\n        self.fill\
+      \ = 0\n        self.last_pred = -1\n        self.current_pred = 0.0\n\n    def\
+      \ _preprocess(self, x_cplx):\n        # RMS normalize in float64 (safe)\n  \
+      \      mag2 = (np.real(x_cplx).astype(np.float64)**2 + np.imag(x_cplx).astype(np.float64)**2)\n\
+      \        p = np.mean(mag2)\n        if (not np.isfinite(p)) or p < 1e-18:\n\
+      \            return None\n        x = x_cplx / np.float32(np.sqrt(p))\n\n  \
+      \      I = np.real(x).astype(np.float32)\n        Q = np.imag(x).astype(np.float32)\n\
+      \        X = np.stack([I, Q], axis=0)[None, :, :]  # (1,2,L)\n        return\
+      \ X\n\n    def _infer(self, x_cplx):\n        X = self._preprocess(x_cplx)\n\
+      \        if X is None:\n            return None\n        logits = self.sess.run(None,\
+      \ {self.input_name: X})[0]  # (1,C)\n        return int(np.argmax(logits, axis=1)[0])\n\
+      \n    def work(self, input_items, output_items):\n        x = input_items[0]\n\
+      \        y = output_items[0]     # complex passthrough\n        ylab = output_items[1]\
+      \  # float label index\n\n        y[:] = x\n        ylab[:] = self.current_pred\
+      \  # hold last prediction\n\n        n = len(x)\n        i = 0\n        while\
+      \ i < n:\n            take = min(n - i, self.win_len - self.fill)\n        \
+      \    self.buf[self.fill:self.fill+take] = x[i:i+take]\n            self.fill\
+      \ += take\n            i += take\n\n            if self.fill == self.win_len:\n\
+      \                pred = self._infer(self.buf)\n                if pred is not\
+      \ None:\n                    self.current_pred = float(pred)\n\n           \
+      \         if pred != self.last_pred:\n                        label = self.labels[pred]\n\
+      #                        self.add_item_tag(1, self.nitems_written(1), pmt.intern(\"\
+      mod\"), pmt.intern(label))\n                        if self.print_on_change:\n\
+      \                            print(\"[modclf] predicted:\", label)\n       \
+      \                 self.message_port_pub(pmt.intern(\"label_out\"), pmt.intern(label))\n\
+      \                        self.last_pred = pred\n\n                # overlap\
+      \ shift\n                hop = self.hop_len\n                self.buf[:self.win_len-hop]\
+      \ = self.buf[hop:]\n                self.fill = self.win_len - hop\n\n     \
+      \   return n\n\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    hop_len: '256'
+    labels_path: '"/media/shakir/EXT4_1TB/projects/sdr/modclf-gnuradio-ml/models/labels.json"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    model_path: '"/media/shakir/EXT4_1TB/projects/sdr/modclf-gnuradio-ml/models/modclf.onnx"'
+    print_on_change: 'True'
+    win_len: '1024'
+  states:
+    _io_cache: ('modclf_infer_onnx', 'blk', [('model_path', "'models/modclf.onnx'"),
+      ('labels_path', "'models/labels.json'"), ('win_len', '1024'), ('hop_len', '256'),
+      ('print_on_change', 'True')], [('0', 'complex', 1)], [('0', 'complex', 1), ('1',
+      'float', 1), ('label_out', 'message', 1)], '', ['hop_len', 'print_on_change',
+      'win_len'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [976, 1144.0]
+    rotation: 0
+    state: disabled
+- name: epy_block_1
+  id: epy_block
+  parameters:
+    _source_code: "import numpy as np\nimport onnxruntime as ort\nimport json\nimport\
+      \ pmt\nfrom gnuradio import gr\n\nclass blk(gr.sync_block):\n    \"\"\"\n  \
+      \  Predict modulation once every update_period_s seconds (time-based),\n   \
+      \ using the last win_len samples from a ring buffer.\n    \"\"\"\n\n    def\
+      \ __init__(self,\n                 model_path=\"models/modclf.onnx\",\n    \
+      \             labels_path=\"models/labels.json\",\n                 win_len=1024,\n\
+      \                 samp_rate=1e6,\n                 update_period_s=1.0,\n  \
+      \               print_on_change=True):\n        gr.sync_block.__init__(\n  \
+      \          self,\n            name=\"modclf_infer_onnx_1hz\",\n            in_sig=[np.complex64],\n\
+      \            out_sig=[np.complex64, np.float32],\n        )\n\n        self.message_port_register_out(pmt.intern(\"\
+      label_out\"))\n\n        self.win_len = int(win_len)\n        self.samp_rate\
+      \ = float(samp_rate)\n        self.update_period_s = float(update_period_s)\n\
+      \        self.print_on_change = bool(print_on_change)\n\n        self.samples_per_update\
+      \ = max(1, int(round(self.samp_rate * self.update_period_s)))\n        self.samples_since_update\
+      \ = 0\n\n        with open(labels_path, \"r\") as f:\n            self.labels\
+      \ = json.load(f)\n\n        sess_opts = ort.SessionOptions()\n        sess_opts.intra_op_num_threads\
+      \ = 1\n        self.sess = ort.InferenceSession(model_path, sess_options=sess_opts,\
+      \ providers=[\"CPUExecutionProvider\"])\n        self.input_name = self.sess.get_inputs()[0].name\n\
+      \n        self.buf = np.zeros(self.win_len, dtype=np.complex64)\n        self.widx\
+      \ = 0\n        self.filled = 0\n\n        self.current_pred = 0.0\n        self.last_pred\
+      \ = -1\n\n    def _preprocess(self, x_cplx):\n        re = np.real(x_cplx).astype(np.float64)\n\
+      \        im = np.imag(x_cplx).astype(np.float64)\n        p = np.mean(re*re\
+      \ + im*im)\n        if (not np.isfinite(p)) or p < 1e-18:\n            return\
+      \ None\n        x = x_cplx / np.float32(np.sqrt(p))\n\n        I = np.real(x).astype(np.float32)\n\
+      \        Q = np.imag(x).astype(np.float32)\n        X = np.stack([I, Q], axis=0)[None,\
+      \ :, :]  # (1,2,L)\n        return X\n\n    def _infer_from_buffer(self):\n\
+      \        if self.filled < self.win_len:\n            return None\n\n       \
+      \ # last win_len samples in time order\n        if self.widx == 0:\n       \
+      \     window = self.buf.copy()\n        else:\n            window = np.concatenate((self.buf[self.widx:],\
+      \ self.buf[:self.widx])).astype(np.complex64, copy=False)\n\n        X = self._preprocess(window)\n\
+      \        if X is None:\n            return None\n\n        logits = self.sess.run(None,\
+      \ {self.input_name: X})[0]  # (1,C)\n        return int(np.argmax(logits, axis=1)[0])\n\
+      \n    def _write_ring(self, x):\n        n = len(x)\n        if n == 0:\n  \
+      \          return\n\n        # IMPORTANT FIX: if GNU Radio gives us >= win_len\
+      \ samples in one call,\n        # just keep the last win_len samples.\n    \
+      \    if n >= self.win_len:\n            tail = x[-self.win_len:].astype(np.complex64,\
+      \ copy=False)\n            self.buf[:] = tail\n            self.widx = 0\n \
+      \           self.filled = self.win_len\n            return\n\n        end =\
+      \ self.widx + n\n        if end <= self.win_len:\n            self.buf[self.widx:end]\
+      \ = x\n        else:\n            first = self.win_len - self.widx\n       \
+      \     self.buf[self.widx:] = x[:first]\n            second = end % self.win_len\n\
+      \            if second > 0:\n                self.buf[:second] = x[first:first+second]\n\
+      \n        self.widx = end % self.win_len\n        self.filled = min(self.win_len,\
+      \ self.filled + n)\n\n    def work(self, input_items, output_items):\n     \
+      \   x = input_items[0]\n        y = output_items[0]\n        ylab = output_items[1]\n\
+      \n        y[:] = x\n        ylab[:] = self.current_pred\n\n        self._write_ring(x)\n\
+      \        self.samples_since_update += len(x)\n\n        # run at most once per\
+      \ work() call (keeps GUI smooth)\n        if self.filled >= self.win_len and\
+      \ self.samples_since_update >= self.samples_per_update:\n            pred =\
+      \ self._infer_from_buffer()\n            if pred is not None:\n            \
+      \    self.current_pred = float(pred)\n                if pred != self.last_pred:\n\
+      \                    label = self.labels[pred]\n                    if self.print_on_change:\n\
+      \                        print(\"[modclf] predicted:\", label)\n           \
+      \         self.message_port_pub(pmt.intern(\"label_out\"), pmt.intern(label))\n\
+      \                    self.last_pred = pred\n\n            self.samples_since_update\
+      \ -= self.samples_per_update\n\n        return len(x)\n\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    labels_path: '"/media/shakir/EXT4_1TB/projects/sdr/modclf-gnuradio-ml/models/labels.json"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    model_path: '"/media/shakir/EXT4_1TB/projects/sdr/modclf-gnuradio-ml/models/modclf.onnx"'
+    print_on_change: 'True'
+    samp_rate: samp_rate
+    update_period_s: '1.0'
+    win_len: '1024'
+  states:
+    _io_cache: ('modclf_infer_onnx_1hz', 'blk', [('model_path', "'models/modclf.onnx'"),
+      ('labels_path', "'models/labels.json'"), ('win_len', '1024'), ('samp_rate',
+      '1000000.0'), ('update_period_s', '1.0'), ('print_on_change', 'True')], [('0',
+      'complex', 1)], [('0', 'complex', 1), ('1', 'float', 1), ('label_out', 'message',
+      1)], '\n    Predict modulation once every update_period_s seconds (time-based),\n    using
+      the last win_len samples from a ring buffer.\n    ', ['print_on_change', 'samp_rate',
+      'update_period_s', 'win_len'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1120, 1488.0]
+    rotation: 0
+    state: disabled
+- name: epy_block_2
+  id: epy_block
+  parameters:
+    _source_code: "import numpy as np\nimport onnxruntime as ort\nimport json\nimport\
+      \ pmt\nfrom gnuradio import gr\n\nfrom PyQt5 import QtWidgets, QtCore\n\nclass\
+      \ LabelPopup(QtWidgets.QWidget):\n    def __init__(self, title=\"Modulation\
+      \ Prediction\"):\n        super().__init__()\n        self.setWindowTitle(title)\n\
+      \        self.setMinimumSize(420, 160)\n\n        self.label = QtWidgets.QLabel(\"\
+      ...\", self)\n        self.label.setAlignment(QtCore.Qt.AlignCenter)\n\n   \
+      \     font = self.label.font()\n        font.setPointSize(28)\n        font.setBold(True)\n\
+      \        self.label.setFont(font)\n\n        layout = QtWidgets.QVBoxLayout()\n\
+      \        layout.addWidget(self.label)\n        self.setLayout(layout)\n\n  \
+      \  @QtCore.pyqtSlot(str)\n    def set_text(self, text):\n        self.label.setText(text)\n\
+      \nclass blk(gr.sync_block):\n    def __init__(self,\n                 model_path=\"\
+      models/modclf.onnx\",\n                 labels_path=\"models/labels.json\",\n\
+      \                 win_len=1024,\n                 hop_len=256,\n           \
+      \      print_on_change=True,\n                 enable_label_out=True,\n    \
+      \             enable_popup=True,\n                 popup_title=\"Modulation\
+      \ Prediction\"):\n        gr.sync_block.__init__(\n            self,\n     \
+      \       name=\"modclf_infer_onnx\",\n            in_sig=[np.complex64],\n  \
+      \          out_sig=[np.float32],   # ONLY label index output\n        )\n\n\
+      \        # Optional message port\n        self.enable_label_out = bool(enable_label_out)\n\
+      \        if self.enable_label_out:\n            self.message_port_register_out(pmt.intern(\"\
+      label_out\"))\n\n        self.win_len = int(win_len)\n        self.hop_len =\
+      \ int(hop_len)\n        self.print_on_change = bool(print_on_change)\n\n   \
+      \     with open(labels_path, \"r\") as f:\n            self.labels = json.load(f)\n\
+      \n        sess_opts = ort.SessionOptions()\n        sess_opts.intra_op_num_threads\
+      \ = 1\n        self.sess = ort.InferenceSession(\n            model_path,\n\
+      \            sess_options=sess_opts,\n            providers=[\"CPUExecutionProvider\"\
+      ]\n        )\n        self.input_name = self.sess.get_inputs()[0].name\n\n \
+      \       self.buf = np.zeros(self.win_len, dtype=np.complex64)\n        self.fill\
+      \ = 0\n        self.last_pred = -1\n        self.current_pred = 0.0\n\n    \
+      \    # Popup\n        self._popup = None\n        self.enable_popup = bool(enable_popup)\n\
+      \        if self.enable_popup:\n            app = QtWidgets.QApplication.instance()\n\
+      \            if app is not None:\n                self._popup = LabelPopup(title=str(popup_title))\n\
+      \                self._popup.show()\n\n    def _preprocess(self, x_cplx):\n\
+      \        mag2 = (np.real(x_cplx).astype(np.float64)**2 + np.imag(x_cplx).astype(np.float64)**2)\n\
+      \        p = np.mean(mag2)\n        if (not np.isfinite(p)) or p < 1e-18:\n\
+      \            return None\n        x = x_cplx / np.float32(np.sqrt(p))\n\n  \
+      \      I = np.real(x).astype(np.float32)\n        Q = np.imag(x).astype(np.float32)\n\
+      \        X = np.stack([I, Q], axis=0)[None, :, :]  # (1,2,L)\n        return\
+      \ X\n\n    def _infer(self, x_cplx):\n        X = self._preprocess(x_cplx)\n\
+      \        if X is None:\n            return None\n        logits = self.sess.run(None,\
+      \ {self.input_name: X})[0]  # (1,C)\n        return int(np.argmax(logits, axis=1)[0])\n\
+      \n    def _popup_set_label(self, label):\n        if self._popup is not None:\n\
+      \            QtCore.QMetaObject.invokeMethod(\n                self._popup,\n\
+      \                \"set_text\",\n                QtCore.Qt.QueuedConnection,\n\
+      \                QtCore.Q_ARG(str, str(label))\n            )\n\n    def work(self,\
+      \ input_items, output_items):\n        x = input_items[0]\n        ylab = output_items[0]\
+      \  # float label index output\n\n        # hold last prediction across samples\n\
+      \        ylab[:] = self.current_pred\n\n        n = len(x)\n        i = 0\n\
+      \        while i < n:\n            take = min(n - i, self.win_len - self.fill)\n\
+      \            self.buf[self.fill:self.fill+take] = x[i:i+take]\n            self.fill\
+      \ += take\n            i += take\n\n            if self.fill == self.win_len:\n\
+      \                pred = self._infer(self.buf)\n                if pred is not\
+      \ None:\n                    self.current_pred = float(pred)\n\n           \
+      \         if pred != self.last_pred:\n                        label = self.labels[pred]\n\
+      \n                        if self.print_on_change:\n                       \
+      \     print(\"[modclf] predicted:\", label)\n\n                        self._popup_set_label(label)\n\
+      \n                        if self.enable_label_out:\n                      \
+      \      self.message_port_pub(pmt.intern(\"label_out\"), pmt.intern(label))\n\
+      \n                        self.last_pred = pred\n\n                # overlap\
+      \ shift\n                hop = self.hop_len\n                self.buf[:self.win_len-hop]\
+      \ = self.buf[hop:]\n                self.fill = self.win_len - hop\n\n     \
+      \   return n\n\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    enable_label_out: 'True'
+    enable_popup: 'True'
+    hop_len: '256'
+    labels_path: '"/media/shakir/EXT4_1TB/projects/sdr/sdr-ModRec/models/labels.json"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    model_path: '"/media/shakir/EXT4_1TB/projects/sdr/sdr-ModRec/models/modclf.onnx"'
+    popup_title: '"Predicted Modulation"'
+    print_on_change: 'True'
+    win_len: '1024'
+  states:
+    _io_cache: ('modclf_infer_onnx', 'blk', [('model_path', "'models/modclf.onnx'"),
+      ('labels_path', "'models/labels.json'"), ('win_len', '1024'), ('hop_len', '256'),
+      ('print_on_change', 'True'), ('enable_label_out', 'True'), ('enable_popup',
+      'True'), ('popup_title', "'Modulation Prediction'")], [('0', 'complex', 1)],
+      [('0', 'float', 1), ('label_out', 'message', 1)], '', ['enable_label_out', 'enable_popup',
+      'hop_len', 'print_on_change', 'win_len'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1168, 476.0]
+    rotation: 180
+    state: enabled
+- name: import_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: import numpy as np
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [256, 8.0]
+    rotation: 0
+    state: enabled
+- name: import_1
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: from gnuradio.filter import firdes
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 8.0]
+    rotation: 0
+    state: enabled
+- name: interp_fir_filter_xxx_0
+  id: interp_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    interp: sps
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: '0'
+    taps: 'firdes.root_raised_cosine(1.0, samp_rate, samp_rate/sps, rolloff, span*sps)
+
+      '
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [544, 192.0]
+    rotation: 0
+    state: enabled
+- name: interp_fir_filter_xxx_0_0
+  id: interp_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    interp: sps
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: '0'
+    taps: 'firdes.root_raised_cosine(1.0, samp_rate, samp_rate/sps, rolloff, span*sps)
+
+      '
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [544, 320.0]
+    rotation: 0
+    state: enabled
+- name: interp_fir_filter_xxx_0_0_0
+  id: interp_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    interp: sps
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: '0'
+    taps: 'firdes.root_raised_cosine(1.0, samp_rate, samp_rate/sps, rolloff, span*sps)
+
+      '
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [544, 432.0]
+    rotation: 0
+    state: enabled
+- name: interp_fir_filter_xxx_0_0_0_0
+  id: interp_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    interp: sps
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: '0'
+    taps: 'firdes.root_raised_cosine(1.0, samp_rate, samp_rate/sps, rolloff, span*sps)
+
+      '
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [544, 528.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_const_sink_x_0
+  id: qtgui_const_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    axislabels: 'True'
+    color1: '"blue"'
+    color10: '"dark blue"'
+    color2: '"red"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    grid: 'False'
+    gui_hint: ''
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    marker1: '0'
+    marker10: '0'
+    marker2: '0'
+    marker3: '0'
+    marker4: '0'
+    marker5: '0'
+    marker6: '0'
+    marker7: '0'
+    marker8: '0'
+    marker9: '0'
+    name: '""'
+    nconnections: '1'
+    size: '1024'
+    style1: '0'
+    style10: '0'
+    style2: '0'
+    style3: '0'
+    style4: '0'
+    style5: '0'
+    style6: '0'
+    style7: '0'
+    style8: '0'
+    style9: '0'
+    tr_chan: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: complex
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    xmax: '2'
+    xmin: '-2'
+    ymax: '2'
+    ymin: '-2'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1016, 1288.0]
+    rotation: 180
+    state: disabled
+- name: qtgui_time_sink_x_0
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    axislabels: 'True'
+    color1: blue
+    color10: dark blue
+    color2: red
+    color3: green
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'False'
+    entags: 'True'
+    grid: 'False'
+    gui_hint: ''
+    label1: Signal 1
+    label10: Signal 10
+    label2: Signal 2
+    label3: Signal 3
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '-1'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: Modulation (0 = BPSK, 1 = QPSK, 2 = 8PSK, 3 = 16QAM)
+    nconnections: '1'
+    size: '1024'
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '1'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: float
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Class Index
+    ymax: '3.5'
+    ymin: '-0.5'
+    yunit: '""'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [864, 496.0]
+    rotation: 180
+    state: enabled
+
+connections:
+- [analog_random_source_x_0, '0', digital_chunks_to_symbols_xx_0, '0']
+- [analog_random_source_x_0_0, '0', digital_chunks_to_symbols_xx_0_0, '0']
+- [analog_random_source_x_0_0_0, '0', digital_chunks_to_symbols_xx_0_0_0, '0']
+- [analog_random_source_x_0_0_0_0, '0', digital_chunks_to_symbols_xx_0_0_0_0, '0']
+- [blocks_selector_0, '0', channels_channel_model_0, '0']
+- [blocks_throttle2_0, '0', epy_block_0, '0']
+- [blocks_throttle2_0, '0', epy_block_1, '0']
+- [blocks_throttle2_0, '0', epy_block_2, '0']
+- [channels_channel_model_0, '0', blocks_throttle2_0, '0']
+- [digital_chunks_to_symbols_xx_0, '0', interp_fir_filter_xxx_0, '0']
+- [digital_chunks_to_symbols_xx_0_0, '0', interp_fir_filter_xxx_0_0, '0']
+- [digital_chunks_to_symbols_xx_0_0_0, '0', interp_fir_filter_xxx_0_0_0, '0']
+- [digital_chunks_to_symbols_xx_0_0_0_0, '0', interp_fir_filter_xxx_0_0_0_0, '0']
+- [epy_block_0, '0', qtgui_const_sink_x_0, '0']
+- [epy_block_0, '1', qtgui_time_sink_x_0, '0']
+- [epy_block_0, label_out, blocks_message_debug_0, print]
+- [epy_block_1, '0', qtgui_const_sink_x_0, '0']
+- [epy_block_1, '1', qtgui_time_sink_x_0, '0']
+- [epy_block_1, label_out, blocks_message_debug_0, print]
+- [epy_block_2, '0', qtgui_time_sink_x_0, '0']
+- [interp_fir_filter_xxx_0, '0', blocks_selector_0, '0']
+- [interp_fir_filter_xxx_0_0, '0', blocks_selector_0, '1']
+- [interp_fir_filter_xxx_0_0_0, '0', blocks_selector_0, '2']
+- [interp_fir_filter_xxx_0_0_0_0, '0', blocks_selector_0, '3']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.12.0
