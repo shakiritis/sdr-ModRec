@@ -1,0 +1,35 @@
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+
+
+conda create -n gr310 python=3.10 -c conda-forge -y
+conda activate gr310
+conda install -c conda-forge -y gnuradio=3.10 numpy matplotlib scikit-learn tqdm onnx onnxruntime
+conda install -c pytorch -c conda-forge -y pytorch
+
+
+for mod in 0 1 2 3; do
+  for snr in 0 10 20; do
+    for cfo in 0 500; do
+      out="data/raw/mod${mod}_snr${snr}_cfo${cfo}.c64"
+      echo "Generating $out"
+      python3 python/modgen.py \
+        --mod-sel ${mod} \
+        --snr-db ${snr} \
+        --cfo-hz ${cfo} \
+        --n-samps 300000 \
+        --out-file "${out}"
+    done
+  done
+done
+
+
+
+python3 python/make_windows.py \
+  --in_glob "data/raw/*.c64" \
+  --win 1024 --hop 256 \
+  --max_windows_per_file 2000 \
+  --out_npz data/modclf_windows_v1.npz
+
+
+
